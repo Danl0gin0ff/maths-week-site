@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <title>Code Entry Safe</title>
 </head>
 <body>
-    <h1>Enter Code</h1>
+    <div id="displays">Math Sum Hunt - Final Stage </div>
     <div id="display"> </div> <!-- Display area for entered numbers -->
+    
     
     <div id="keypad">
         <div class="row">
@@ -28,8 +30,8 @@
         </div>
         <div class="row">
             <button onclick="enterNumber(0)">0</button>
-            <button onclick="checkCode()">✔</button> <!-- Check button -->
             <button onclick="deleteLast()">✖</button> <!-- Delete button added -->
+            <button onclick="checkCode()">✔</button> <!-- Check button -->
         </div>
     </div>
     
