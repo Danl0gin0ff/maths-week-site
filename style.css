@@ -5,7 +5,7 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0; /* Light background for contrast */
+    background-color: #808080; /* Light background for contrast */
 }
 
 h1 {
@@ -19,6 +19,18 @@ h1 {
     padding: 10px;
     height: 20px;
     width: 200px; /* Set width for the display */
+    text-align: center;
+    font-size: 20px; /* Larger font size for better visibility */
+    margin-bottom: 20px; /* Space between display and keypad */
+}
+
+#displays {
+    background-color: #ccc; /* Light grey background for the display */
+    border: 2px solid #999; /* Darker border for the display */
+    border-radius: 8px; /* Rounded corners for the display */
+    padding: 10px;
+    height: 20px;
+    width: 500px; /* Set width for the display */
     text-align: center;
     font-size: 20px; /* Larger font size for better visibility */
     margin-bottom: 20px; /* Space between display and keypad */
@@ -47,6 +59,10 @@ button {
     margin: 5px; /* Space between buttons */
     padding: 15px 20px; /* Padding for buttons */
     cursor: pointer; /* Pointer cursor on hover */
+    width:50px;
+}
+
+
 }
 
 button:hover {
