@@ -8,10 +8,11 @@
     <title>Code Entry Safe</title>
 </head>
 <body>
-    <div id="displays">Math Sum Hunt - Final Stage </div>
+
+    <audio id="beep-sound" src="beep.mp3"></audio> <!-- Beep sound file -->
+    <div id="balloon-container"></div>
+    <div id="displays">Math Sum Hunt - Final Stage</div>
     <div id="display"> </div> <!-- Display area for entered numbers -->
-    
-    
     <div id="keypad">
         <div class="row">
             <button onclick="enterNumber(1)">1</button>
@@ -30,11 +31,12 @@
         </div>
         <div class="row">
             <button onclick="enterNumber(0)">0</button>
-            <button onclick="deleteLast()">✖</button> <!-- Delete button added -->
-            <button onclick="checkCode()">✔</button> <!-- Check button -->
+            <button id="tick" style="background-color: green;" onclick="checkCode()">✔️</button>
+            <button id="cross" style="background-color: red;" onclick="deleteLast()">❌</button>
         </div>
     </div>
     
     <script src="script.js"></script>
 </body>
+</html>
 </html>
