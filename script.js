@@ -10,15 +10,14 @@ function enterNumber(num) {
     createBalloon(num);
 }
 
-
 function checkCode() {
     const code = document.getElementById('display').innerText; // Get the entered code
 
     if (code === correctCode) {
         deleteAll(); // Clear the display for next input
-        playHooraySound(); // Play hooray sound
-        showWellDoneImage(); // Show a "Well Done" image
+        playSuccessAnimation();
         createSparkles(); // Create sparkles
+
     } else {
         playIncorrectSound(); // Play incorrect sound
         deleteAll(); // Clear the display on incorrect attempt
@@ -29,6 +28,7 @@ function deleteAll() {
     code = ''; // Reset code variable
     document.getElementById('display').innerText = ''; // Clear the display area
 }
+
 
 
 
@@ -88,20 +88,60 @@ function createSparkles() {
     }
 }
 
+function playSuccessAnimation() {
+    // Clear the display area
+    const display = document.getElementById('display');
+    display.innerHTML = '';
 
+    // Create a new div for the "Well Done" message
+    const wellDone = document.createElement('div');
+    wellDone.textContent = 'Well Done!';
+    wellDone.style.position = 'absolute';
+    wellDone.style.top = '50%';
+    wellDone.style.left = '50%';
+    wellDone.style.transform = 'translate(-50%, -50%)';
+    wellDone.style.fontSize = '48px';
+    wellDone.style.fontWeight = 'bold';
+    document.body.appendChild(wellDone);
 
+    // Change colors and animate
+    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+    let index = 0;
 
-function playHooraySound() {
+    const interval = setInterval(() => {
+        wellDone.style.color = colors[index % colors.length];
+        index++;
+
+        // Stop the animation after a set time
+        if (index > 20) {
+            clearInterval(interval);
+            document.body.removeChild(wellDone); // Remove the message after finishing
+            setTimeout(() => {
+                // Show the keypad after a delay
+                display.innerHTML = ' '; // Optional: Show a message if needed
+                showKeypad(); // Function to display the keypad again
+            }, 2000); // Delay before showing the keypad (2000 ms = 2 seconds)
+        }
+    }, 200); // Change color every 200ms
+
+    // Play success sound
     const hooraySound = document.getElementById('hooray-sound');
-    hooraySound.currentTime = 0; // Reset to start
-    hooraySound.play(); // Play the hooray sound
+    hooraySound.currentTime = 0; // Reset the sound
+    hooraySound.play(); // Play sound
 }
 
-function playIncorrectSound() {
-    const incorrectSound = document.getElementById('incorrect-sound');
-    incorrectSound.currentTime = 0; // Reset to start
-    incorrectSound.play(); // Play the incorrect sound
+// Function to show the keypad again
+function showKeypad() {
+    document.getElementById('keypad').style.display = 'block'; // Make keypad visible again
 }
+
+
+
+
+
+
+
+
 
 
 
