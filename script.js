@@ -90,6 +90,19 @@ function deleteAll() {
 }
 
 
+function playHooraySound() {
+    const hooraySound = document.getElementById('hooray-sound');
+    hooraySound.currentTime = 0; // Reset to start
+    hooraySound.play(); // Play the hooray sound
+}
+
+function playIncorrectSound() {
+    const incorrectSound = document.getElementById('incorrect-sound');
+    incorrectSound.currentTime = 0; // Reset to start
+    incorrectSound.play(); // Play the incorrect sound
+}
+
+
 
 
 
