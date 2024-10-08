@@ -10,20 +10,24 @@ function enterNumber(num) {
     createBalloon(num);
 }
 
+
 function checkCode() {
     const code = document.getElementById('display').innerText; // Get the entered code
-    const correctCode = "1234"; // Change this to your actual correct code
 
     if (code === correctCode) {
-        deleteAll();
+        deleteAll(); // Clear the display for next input
         playHooraySound(); // Play hooray sound
         showWellDoneImage(); // Show a "Well Done" image
-        createSparkles();
+        createSparkles(); // Create sparkles
     } else {
-        deleteAll(); // Clear the display on incorrect attempt
         playIncorrectSound(); // Play incorrect sound
-        // Optionally, show sparks or other feedback here
+        deleteAll(); // Clear the display on incorrect attempt
     }
+}
+
+function deleteAll() {
+    code = ''; // Reset code variable
+    document.getElementById('display').innerText = ''; // Clear the display area
 }
 
 
@@ -84,10 +88,7 @@ function createSparkles() {
     }
 }
 
-function deleteAll() {
-    document.getElementById('display').innerText = ''; // Clear the display area
-    // Optionally, you can play a sound here if needed
-}
+
 
 
 function playHooraySound() {
