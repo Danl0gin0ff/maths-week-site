@@ -30,8 +30,10 @@ function checkCode() {
     // Example correct code is '1234'
     if (enteredCode === "1234") {
         alert("Code correct!");
+        document.getElementById('correct-sound').play();
     } else {
         alert("Code incorrect.");
+        document.getElementById('incorrect-sound').play();
     }
 }
 
