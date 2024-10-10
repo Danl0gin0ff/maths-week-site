@@ -1,3 +1,4 @@
+console.log("Script Loaded")
 let code = '';
 const correctCodes = ['0321', '3245709618', '5631094827'];
 let balloonContainer = document.getElementById('balloon-container');
