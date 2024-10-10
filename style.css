@@ -17,24 +17,26 @@ h1 {
     border: 2px solid #999; /* Darker border for the display */
     border-radius: 8px; /* Rounded corners for the display */
     padding: 10px;
-    height: 20px;
+    height:20px;
     width: 200px; /* Set width for the display */
     text-align: center;
+    position: relative;
+    top: 200px;
     font-size: 20px; /* Larger font size for better visibility */
     margin-bottom: 20px; /* Space between display and keypad */
 }
 
 #displays {
-    background-color: #808080; /* Light grey background for the display */
-    border: 2px solid #999; /* Darker border for the display */
-    border-radius: 8px; /* Rounded corners for the display */
-    padding: 10px;
-    height: 20px;
-    width: 500px; /* Set width for the display */
+    font-size: 2.5rem;
+    font-family: 'JetBrains Mono', sans-serif;
+    color: lightgreen;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
+    letter-spacing: 2px;
     text-align: center;
-    font-size: 20px; /* Larger font size for better visibility */
-    margin-bottom: 20px; /* Space between display and keypad */
+    margin-top: 20px;
 }
+
+
 
 #keypad {
     display: inline-block;
@@ -42,6 +44,16 @@ h1 {
     padding: 20px;
     border-radius: 10px; /* Rounded corners for the keypad */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow for 3D effect */
+    height: 300px;
+    position: relative; /* Or absolute if necessary */
+    top: -100px; /* Adjust the value to move it higher or lower */
+    margin: 0 auto; /* To center it */
+    width: fit-content;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
 }
 
 #success-image {
@@ -69,45 +81,42 @@ button {
     margin: 5px; /* Space between buttons */
     padding: 15px 20px; /* Padding for buttons */
     cursor: pointer; /* Pointer cursor on hover */
-    width:50px;
+    width:60px;
+    height:60px;
 }
 
 
-}
+
 
 button:hover {
     background-color: #888; /* Darker grey on hover */
 }
 #balloon-container {
     position: relative;
-    height: 300px; /* Adjust this as per your design */
+    width: 100%; /* Or adjust based on your design */
+    height: 900px; /* Adjust height as needed */
 }
 
 .balloon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
     position: absolute;
-    border: 2px solid gold; /* Optional gold outline */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    animation: pop-in 0.5s ease-out;
+    font-size: 24px;
+    color: black;
+    animation: pop-in-out 1s ease-in-out;
+    z-index: 10; /* Higher number ensures it's above the keypad */
 }
 
-@keyframes pop-in {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
+@keyframes pop-in-out {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
 }
+
 
 .sparkle {
     position: absolute;
