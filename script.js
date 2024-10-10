@@ -2,7 +2,8 @@ let code = '';
 const correctCodes = ['0321', '3245709618', '5631094827'];
 let balloonContainer = document.getElementById('balloon-container');
 // Create an audio element for the incorrect sound
-const incorrectSound = new Audio('incorrect-sound.mp3');
+const incorrectSound = new Audio('https://raw.githubusercontent.com/Danl0gin0ff/maths-week-site/main/incorrect.mp3
+');
 
 // Function to enter a number
 function enterNumber(num) {
