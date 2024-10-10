@@ -1,6 +1,8 @@
 let code = '';
 const correctCodes = ['0321', '3245709618', '5631094827'];
 let balloonContainer = document.getElementById('balloon-container');
+// Create an audio element for the incorrect sound
+const incorrectSound = new Audio('path/to/incorrect-sound.mp3');
 
 // Function to enter a number
 function enterNumber(num) {
@@ -19,7 +21,8 @@ function checkCode() {
         createSparkles(); // Create sparkles
 
     } else {
-        document.getElementById('incorrect-sound').play();
+        incorrectSound.currentTime = 0; // Reset to the beginning
+        incorrectSound.play(); // Play the sound
         deleteAll(); // Clear the display on incorrect attempt
     }
 }
