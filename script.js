@@ -1,10 +1,6 @@
-console.log("Script Loaded")
 let code = '';
 const correctCodes = ['0321', '3245709618', '5631094827'];
 let balloonContainer = document.getElementById('balloon-container');
-// Create an audio element for the incorrect sound
-const incorrectSound = new Audio('https://cdn.jsdelivr.net/gh/Danl0gin0ff/maths-week-site/incorrect.mp3
-');
 
 // Function to enter a number
 function enterNumber(num) {
@@ -23,8 +19,7 @@ function checkCode() {
         createSparkles(); // Create sparkles
 
     } else {
-        incorrectSound.currentTime = 0; // Reset to the beginning
-        incorrectSound.play(); // Play the sound
+        playIncorrectSound(); // Play incorrect sound
         deleteAll(); // Clear the display on incorrect attempt
     }
 }
@@ -147,20 +142,6 @@ function playSuccessAnimation() {
 function showKeypad() {
     document.getElementById('keypad').style.display = 'block'; // Make keypad visible again
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
