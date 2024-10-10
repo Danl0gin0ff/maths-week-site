@@ -12,18 +12,25 @@ h1 {
     margin-bottom: 20px;
 }
 
+@media (max-width: 768px) {
+    #keypad {
+        transform: scale(0.8); /* Resize the keypad for smaller screens */
+    }
+}
+
 #display {
     background-color: #808080; /* Light grey background for the display */
     border: 2px solid #999; /* Darker border for the display */
     border-radius: 8px; /* Rounded corners for the display */
     padding: 10px;
     height:20px;
-    width: 00px; /* Set width for the display */
     text-align: center;
     position: relative;
     top: 400px;
     font-size: 20px; /* Larger font size for better visibility */
     margin-bottom: 20px; /* Space between display and keypad */
+    width: 100%; /* Ensure the display box scales */
+    max-width: 300px; /* Limit its maximum size */
 }
 
 #displays {
