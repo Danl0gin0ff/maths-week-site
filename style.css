@@ -21,7 +21,7 @@ h1 {
     width: 200px; /* Set width for the display */
     text-align: center;
     position: relative;
-    top: 200px;
+    top: 400px;
     font-size: 20px; /* Larger font size for better visibility */
     margin-bottom: 20px; /* Space between display and keypad */
 }
@@ -118,23 +118,4 @@ button:hover {
 }
 
 
-.sparkle {
-    position: absolute;
-    width: 10px; /* Sparkle size */
-    height: 10px;
-    background-color: gold; /* Sparkle color */
-    border-radius: 50%; /* Make it circular */
-    opacity: 0;
-    animation: sparkle-animation 1s forwards;
-}
 
-@keyframes sparkle-animation {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-100px); /* Move upward */
-    }
-}
