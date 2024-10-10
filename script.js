@@ -1,5 +1,5 @@
 let code = '';
-let correctCode = '1234'; // Example correct code
+const correctCodes = ['0321', '3245709618', '5631094827'];
 let balloonContainer = document.getElementById('balloon-container');
 
 // Function to enter a number
@@ -13,7 +13,7 @@ function enterNumber(num) {
 function checkCode() {
     const code = document.getElementById('display').innerText; // Get the entered code
 
-    if (code === correctCode) {
+    if (correctCodes.includes(code)) {
         deleteAll(); // Clear the display for next input
         playSuccessAnimation();
         createSparkles(); // Create sparkles
@@ -42,18 +42,19 @@ function deleteLast() {
 function createBalloon(num) {
     let balloon = document.createElement('div');
     balloon.classList.add('balloon');
-    
+
     // Random colors for each balloon
-    const colors = ['red','pink','purple','lightblue','lightgreen', 'green', 'blue'];
+    const colors = ['red', 'pink', 'purple', 'lightblue', 'lightgreen', 'green', 'blue'];
     let randomColor = colors[Math.floor(Math.random() * colors.length)];
     balloon.style.backgroundColor = randomColor;
 
     // Set the number inside the balloon
     balloon.innerText = num;
 
-    // Random positions within the container
-    let randomX = Math.floor(Math.random() * (balloonContainer.offsetWidth - 200)); // Adjust 200 based on balloon size
-    let randomY = Math.floor(Math.random() * (balloonContainer.offsetHeight - 200)); // Adjust 200 based on balloon size
+    // Set random positions above the keypad
+    const randomX = Math.random() * (window.innerWidth - 100); // Full width for horizontal placement
+    const randomY = Math.random() * (window.innerHeight / 2); // Keep balloons above the keypad
+
     balloon.style.left = randomX + 'px';
     balloon.style.top = randomY + 'px';
 
@@ -64,6 +65,13 @@ function createBalloon(num) {
         balloon.remove();
     }, 1000); // Balloon stays for 1 second
 }
+
+
+
+
+
+
+
 
 // Function to play a beep sound
 function playBeep() {
@@ -97,10 +105,10 @@ function playSuccessAnimation() {
     const wellDone = document.createElement('div');
     wellDone.textContent = 'Well Done!';
     wellDone.style.position = 'absolute';
-    wellDone.style.top = '50%';
+    wellDone.style.top = '30%';
     wellDone.style.left = '50%';
     wellDone.style.transform = 'translate(-50%, -50%)';
-    wellDone.style.fontSize = '48px';
+    wellDone.style.fontSize ='65px';
     wellDone.style.fontWeight = 'bold';
     document.body.appendChild(wellDone);
 
@@ -134,6 +142,15 @@ function playSuccessAnimation() {
 function showKeypad() {
     document.getElementById('keypad').style.display = 'block'; // Make keypad visible again
 }
+
+
+
+
+
+
+
+
+
 
 
 
