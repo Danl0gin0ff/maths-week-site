@@ -29,6 +29,11 @@ function deleteAll() {
     document.getElementById('display').innerText = ''; // Clear the display area
 }
 
+function playIncorrectSound() {
+    const incorrectSound = document.getElementById('incorrect-sound');
+    incorrectSound.currentTime = 0; // Reset the sound
+    incorrectSound.play(); // Play sound
+}
 
 
 
