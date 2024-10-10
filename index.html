@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
     <title>Code Entry Safe</title>
 </head>
 <body>
@@ -13,10 +14,17 @@
     <audio id="hooray-sound" src="correct.mp3"></audio> <!-- Replace with your hooray sound file -->
     <audio id="incorrect-sound" src="incorrect.mp3"></audio> <!-- Replace with your incorrect sound file -->
     <img id="success-image" src="success.png" style="display:none;" alt="Well Done!"> <!-- Replace with your success image -->
+    <div id="displays">Math Sum Hunt - Final Stage</div>
+
+
+    <div id="entryBoxContainer">
+        <div id="display"></div> <!-- Your entry box -->
+        
+    </div>
 
     <div id="balloon-container"></div>
-    <div id="displays">Math Sum Hunt - Final Stage</div>
-    <div id="display"> </div> <!-- Display area for entered numbers -->
+
+  
     <div id="keypad">
         <div class="row">
             <button onclick="enterNumber(1)">1</button>
@@ -43,3 +51,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
