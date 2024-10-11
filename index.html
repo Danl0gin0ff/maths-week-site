@@ -3,53 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-
-    <title>Code Entry Safe</title>
+    <title>Code Entry for Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Cool Text Outside the Box -->
+    <h2 class="cool-text">Enter Your Code Below!</h2>
 
-    <audio id="beep-sound" src="beep.mp3"></audio> <!-- Beep sound file -->
-    <audio id="hooray-sound" src="correct.mp3"></audio> <!-- Replace with your hooray sound file -->
-    <audio id="incorrect-sound" src="incorrect.mp3"></audio> <!-- Replace with your incorrect sound file -->
-    <img id="success-image" src="success.png" style="display:none;" alt="Well Done!"> <!-- Replace with your success image -->
-    <div id="displays">Math Sum Hunt - Final Stage</div>
-
-
-    <div id="entryBoxContainer">
-        <div id="display"></div> <!-- Your entry box -->
-        
+    <!-- Keypad and Code Container -->
+    <div class="container">
+        <h1>Enter the Code</h1>
+        <div class="code-box">
+            <input type="password" id="codeInput" maxlength="4" readonly>
+        </div>
+        <div class="keypad">
+            <div class="keys">
+                <button class="key" onclick="enterNumber('1')">1</button>
+                <button class="key" onclick="enterNumber('2')">2</button>
+                <button class="key" onclick="enterNumber('3')">3</button>
+                <button class="key" onclick="enterNumber('4')">4</button>
+                <button class="key" onclick="enterNumber('5')">5</button>
+                <button class="key" onclick="enterNumber('6')">6</button>
+                <button class="key" onclick="enterNumber('7')">7</button>
+                <button class="key" onclick="enterNumber('8')">8</button>
+                <button class="key" onclick="enterNumber('9')">9</button>
+                <button class="key clear" onclick="deleteLastCharacter()">✖️</button>
+                <button class="key" onclick="enterNumber('0')">0</button>
+                <button class="key submit" onclick="checkCode()">✓</button>
+            </div>
+        </div>
+        <div id="resultMessage" class="message"></div>
+        <audio id="successSound" src="correct.mp3" preload="auto"></audio>
+        <audio id="failureSound" src="incorrect.mp3" preload="auto"></audio>
     </div>
-
-    <div id="balloon-container"></div>
-
-  
-    <div id="keypad">
-        <div class="row">
-            <button onclick="enterNumber(1)">1</button>
-            <button onclick="enterNumber(2)">2</button>
-            <button onclick="enterNumber(3)">3</button>
-        </div>
-        <div class="row">
-            <button onclick="enterNumber(4)">4</button>
-            <button onclick="enterNumber(5)">5</button>
-            <button onclick="enterNumber(6)">6</button>
-        </div>
-        <div class="row">
-            <button onclick="enterNumber(7)">7</button>
-            <button onclick="enterNumber(8)">8</button>
-            <button onclick="enterNumber(9)">9</button>
-        </div>
-        <div class="row">
-            <button onclick="enterNumber(0)">0</button>
-            <button id="tick" style="background-color: green;" onclick="checkCode()">✔️</button>
-            <button id="cross" style="background-color: red;" onclick="deleteLast()">❌</button>
-        </div>
-    </div>
-    
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
