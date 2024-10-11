@@ -1,128 +1,122 @@
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #E6E6FA; /* Light background for contrast */
+ /* Cool Text Outside the Box */
+.cool-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 34px;
+    color: #333;
+    margin-bottom: 40px; /* Space between text and box */
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-h1 {
+/* General Body Styling */
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    text-align: center;
+    background-color: #d0e7f9; /* Light blue background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the Keypad and Code Box */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+h1{
+  position:relative;
+  top:-30px;
+}
+/* Code Box Styling */
+.code-box {
+    background-color: #f2f2f2;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 275px;
+    height:50px;
     margin-bottom: 20px;
 }
 
-@media (max-width: 768px) {
-    #keypad {
-        transform: scale(0.8); /* Resize the keypad for smaller screens */
-    }
-}
-
-#display {
-    background-color: #808080; /* Light grey background for the display */
-    border: 2px solid #999; /* Darker border for the display */
-    border-radius: 8px; /* Rounded corners for the display */
+#codeInput {
+    font-size: 36px;
+    letter-spacing: 10px;
+    width: 100%;
     padding: 10px;
-    height:20px;
     text-align: center;
-    position: relative;
-    top: 200px;
-    font-size: 20px; /* Larger font size for better visibility */
-    margin-bottom: 20px; /* Space between display and keypad */
-    width: 100%; /* Ensure the display box scales */
-    max-width: 300px; /* Limit its maximum size */
+    border: none;
+    background: none;
+    outline: none;
 }
 
-#displays {
-    font-size: 2.5rem;
-    font-family: 'JetBrains Mono', sans-serif;
-    color: lightgreen;
-    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
-    letter-spacing: 2px;
-    text-align: center;
-    margin-top: 20px;
+/* Keypad Styling */
+.keypad {
+    margin-top: 10px;
+    height:250px;
+    
 }
 
-
-
-#keypad {
-    display: inline-block;
-    background-color: #ddd; /* Light grey background for the keypad */
-    padding: 20px;
-    border-radius: 10px; /* Rounded corners for the keypad */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow for 3D effect */
-    height: 300px;
-    position: relative; /* Or absolute if necessary */
-    top: -100px; /* Adjust the value to move it higher or lower */
-    margin: 0 auto; /* To center it */
-    width: fit-content;
+.keys {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
-@keyframes rainbow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-#success-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px; /* Adjust size as necessary */
-    display: none; /* Hidden initially */
-}
-
-
-.row {
-    display: flex;
-    justify-content: center; /* Center buttons in the row */
-    margin: 5px 0; /* Space between rows */
-}
-
-button {
-    background-color: #aaa; /* Grey background for buttons */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners for buttons */
-    color: white; /* White text color */
-    font-size: 20px; /* Larger font size for buttons */
-    margin: 5px; /* Space between buttons */
-    padding: 15px 20px; /* Padding for buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    width:60px;
-    height:60px;
-}
-
-
-
-
-button:hover {
-    background-color: #888; /* Darker grey on hover */
-}
-#balloon-container {
-    position: relative;
-    width: 100%; /* Or adjust based on your design */
-    height: 900px; /* Adjust height as needed */
-}
-
-.balloon {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Key/Button Styling */
+.key {
     font-size: 24px;
-    color: black;
-    animation: pop-in-out 1s ease-in-out;
-    z-index: 10; /* Higher number ensures it's above the keypad */
+    padding: 20px;
+    background-color: #b0b0b0; /* Light gray button background */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-@keyframes pop-in-out {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(0); opacity: 0; }
+.key:hover {
+    background-color: #8e8e8e; /* Darker gray on hover */
 }
 
+/* Custom Styling for Special Buttons */
+.key.submit {
+    background-color: #5cd65c; /* Green for Submit */
+}
+
+.key.clear {
+    background-color: #ff6666; /* Red for Clear */
+}
+
+.key.submit:hover {
+    background-color: #45b345; /* Darker green on hover */
+}
+
+.key.clear:hover {
+    background-color: #e60000; /* Darker red on hover */
+}
+
+/* Result Message Styling */
+.message {
+    font-size: 28px;
+    margin-top: 20px;
+    height: 40px;
+    position: relative;
+    top:-415px;
+}
+
+.success {
+    color: green;
+}
+
+.failure {
+    color: red;
+}
 
 
