@@ -1,152 +1,92 @@
-let code = '';
-const correctCodes = ['0321', '3245709618', '5631094827'];
-let balloonContainer = document.getElementById('balloon-container');
+const correctCodes = ["0321", "3245709618", "5631094827"]; // Add your codes here
 
-// Function to enter a number
-function enterNumber(num) {
-    code += num;
-    document.getElementById('display').innerText = code;
-    playBeep();
-    createBalloon(num);
+function enterNumber(number) {
+    const codeInput = document.getElementById('codeInput');
+    if (codeInput.value.length < 10) {
+        codeInput.value += number;
+    }
+}
+
+function clearCode() {
+    document.getElementById('codeInput').value = '';
+    document.getElementById('resultMessage').innerHTML = '';
 }
 
 function checkCode() {
-    const code = document.getElementById('display').innerText; // Get the entered code
-
-    if (correctCodes.includes(code)) {
-        deleteAll(); // Clear the display for next input
-        playSuccessAnimation();
-        createSparkles(); // Create sparkles
-
+    const codeInput = document.getElementById('codeInput').value;
+    const resultMessage = document.getElementById('resultMessage');
+    const successSound = document.getElementById('successSound');
+    const failureSound = document.getElementById('failureSound');
+    
+    if (correctCodes.includes(codeInput)) {
+        showResultMessage("Well Done!", "success")
+        resultMessage.className = 'message success';
+        successSound.play(); // Play success sound
     } else {
-        playIncorrectSound(); // Play incorrect sound
-        deleteAll(); // Clear the display on incorrect attempt
+        showResultMessage("Try Again")
+        resultMessage.className = 'message failure';
+        failureSound.play(); // Play failure sound
     }
 }
 
-function deleteAll() {
-    code = ''; // Reset code variable
-    document.getElementById('display').innerText = ''; // Clear the display area
+function addToInput(digit) {
+    const codeInput = document.getElementById('codeInput');
+    const codeDots = document.getElementById('codeDots');
+
+    if (codeInput.value.length < 4) {
+        codeInput.value += digit; // Add digit to input
+        updateDots(); // Update the dots display
+    }
 }
 
+// Function to update dots based on the current input
+function updateDots() {
+    const codeInput = document.getElementById('codeInput');
+    const codeDots = document.getElementById('codeDots');
 
+    // Clear existing dots
+    codeDots.innerHTML = '';
 
-
-// Function to delete the last entered number
-function deleteLast() {
-    code = code.slice(0, -1);
-    document.getElementById('display').innerText = code;
+    // Create dots based on the current input length
+    for (let i = 0; i < codeInput.value.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        codeDots.appendChild(dot);
+    }
 }
 
-// Function to create the balloon effect with random positions
-function createBalloon(num) {
-    let balloon = document.createElement('div');
-    balloon.classList.add('balloon');
+function showResultMessage(message, type) {
+    const resultMessage = document.getElementById('resultMessage');
+    
+    // If the message is "Well Done!" (success), apply styles
+    if (type === "success") {
+        resultMessage.textContent = message;
+        resultMessage.style.fontSize = "32px"; // Bigger font for "Well Done"
+        resultMessage.style.color = 'transparent';
+        resultMessage.style.background = 'green'; // Solid green background
+        resultMessage.style.webkitBackgroundClip = 'text';
+        resultMessage.style.backgroundClip = 'text';
+        resultMessage.style.textAlign = 'center'; // Center the text
+        resultMessage.style.padding = '10px'; // Add padding for better spacing
+    } else {
+        // For "Try Again!", make the text small and near the code box
+        resultMessage.textContent = message;
+        resultMessage.style.fontSize = "32px"; // Smaller font for "Try Again"
+        resultMessage.style.color = 'red'; // Red for "Try Again!"
+        resultMessage.style.background = 'none'; // No background for "Try Again!"
 
-    // Random colors for each balloon
-    const colors = ['red', 'pink', 'purple', 'lightblue', 'lightgreen', 'green', 'blue'];
-    let randomColor = colors[Math.floor(Math.random() * colors.length)];
-    balloon.style.backgroundColor = randomColor;
+    }
 
-    // Set the number inside the balloon
-    balloon.innerText = num;
-
-    // Set random positions above the keypad
-    const randomX = Math.random() * (window.innerWidth - 100); // Full width for horizontal placement
-    const randomY = Math.random() * (window.innerHeight / 2); // Keep balloons above the keypad
-
-    balloon.style.left = randomX + 'px';
-    balloon.style.top = randomY + 'px';
-
-    balloonContainer.appendChild(balloon);
-
-    // Remove the balloon after the animation
+    // Remove the message after 5 seconds
     setTimeout(() => {
-        balloon.remove();
-    }, 1000); // Balloon stays for 1 second
+        resultMessage.textContent = ''; // Clears the message
+        clearCode()
+    }, 3000);
 }
 
-
-
-
-
-
-
-
-// Function to play a beep sound
-function playBeep() {
-    let beep = document.getElementById('beep-sound');
-    beep.play();
+function deleteLastCharacter() {
+    const codeInput = document.getElementById('codeInput');
+    // Remove the last character from the current value
+    codeInput.value = codeInput.value.slice(0, -1);
+    updateDots(); // Update the dots display
 }
-
-function createSparkles() {
-    const container = document.getElementById('balloon-container'); // or any other container you prefer
-
-    for (let i = 0; i < 20; i++) { // Create 20 sparkles
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
-        sparkle.style.animationDuration = Math.random() * 2 + 1 + 's'; // Random duration for each sparkle
-        container.appendChild(sparkle);
-
-        // Remove the sparkle after the animation ends
-        sparkle.addEventListener('animationend', () => {
-            sparkle.remove();
-        });
-    }
-}
-
-function playSuccessAnimation() {
-    // Clear the display area
-    const display = document.getElementById('display');
-    display.innerHTML = '';
-
-    // Create a new div for the "Well Done" message
-    const wellDone = document.createElement('div');
-    wellDone.textContent = 'Well Done!';
-    wellDone.style.position = 'absolute';
-    wellDone.style.top = '30%';
-    wellDone.style.left = '50%';
-    wellDone.style.transform = 'translate(-50%, -50%)';
-    wellDone.style.fontSize ='65px';
-    wellDone.style.fontWeight = 'bold';
-    document.body.appendChild(wellDone);
-
-    // Change colors and animate
-    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
-    let index = 0;
-
-    const interval = setInterval(() => {
-        wellDone.style.color = colors[index % colors.length];
-        index++;
-
-        // Stop the animation after a set time
-        if (index > 20) {
-            clearInterval(interval);
-            document.body.removeChild(wellDone); // Remove the message after finishing
-            setTimeout(() => {
-                // Show the keypad after a delay
-                display.innerHTML = ' '; // Optional: Show a message if needed
-                showKeypad(); // Function to display the keypad again
-            }, 2000); // Delay before showing the keypad (2000 ms = 2 seconds)
-        }
-    }, 200); // Change color every 200ms
-
-    // Play success sound
-    const hooraySound = document.getElementById('hooray-sound');
-    hooraySound.currentTime = 0; // Reset the sound
-    hooraySound.play(); // Play sound
-}
-
-// Function to show the keypad again
-function showKeypad() {
-    document.getElementById('keypad').style.display = 'block'; // Make keypad visible again
-}
-
-
-
-
-
-
-
-
